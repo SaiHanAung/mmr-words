@@ -44,7 +44,6 @@
 
         * {
             font-family: 'Prompt', sans-serif;
-            font-size: 14px;
         }
 
         body {
@@ -53,7 +52,8 @@
 
         html,
         body {
-            height: 100%
+            height: 100%;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -193,7 +193,8 @@
                                         </div>
                                     </div>
                                     <template v-for="(t, ti) in w.th" :key="ti + t.mean">
-                                        <p class="m-0 p-0" style="text-indent: 25px;"><b class="me-2">{{ t.type }} </b> {{ t.mean
+                                        <p class="m-0 p-0" style="text-indent: 25px;"><b class="me-2">{{ t.type }} </b>
+                                            {{ t.mean
                                             }}</p>
                                     </template>
                                     <hr class="m-1">
@@ -238,7 +239,8 @@
                                             <label for="floatingType">Type</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Mean" v-model="t.mean"></textarea>
+                                            <textarea class="form-control" placeholder="Mean" rows="3"
+                                                v-model="t.mean"></textarea>
                                             <label for="floatingMean">Mean</label>
                                         </div>
                                     </template>
@@ -288,8 +290,8 @@
                                                 <label for="floatingType">Type</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" placeholder="Mean"
-                                                    v-model="t.mean">
+                                                <textarea class="form-control" placeholder="Mean" rows="3"
+                                                    v-model="t.mean"></textarea>
                                                 <label for="floatingMean">Mean</label>
                                             </div>
                                         </template>
