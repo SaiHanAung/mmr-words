@@ -192,11 +192,10 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between" v-for="(t, ti) in w.th"
-                                        :key="ti + t.mean">
-                                        <span style="text-indent: 25px;"><b class="me-2">{{ t.type }} </b> {{ t.mean
-                                            }}</span>
-                                    </div>
+                                    <template v-for="(t, ti) in w.th" :key="ti + t.mean">
+                                        <p class="m-0 p-0" style="text-indent: 25px;"><b class="me-2">{{ t.type }} </b> {{ t.mean
+                                            }}</p>
+                                    </template>
                                     <hr class="m-1">
                                 </template>
                             </div>
