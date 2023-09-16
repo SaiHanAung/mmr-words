@@ -153,7 +153,7 @@
                                     <b>{{ word[0] }}</b>
                                 </div>
                                 <template v-for="(w, wi) in word[1]" :key="wi + w.mmr">
-                                    <div class="d-flex justify-content-between">
+                                    <!-- <div class="d-flex justify-content-between">
                                         <div class="d-flex gap-3">
                                             <span>{{ wi + 1 }}.</span>
                                             <span>{{ w.mmr }}</span>
@@ -190,6 +190,47 @@
                                                     </div>
                                                 </li>
                                             </ul>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="col-6 d-flex gap-3">
+                                            <span>{{ wi + 1 }}.</span>
+                                            <span>{{ w.mmr }}</span>
+                                            <span>[ {{ w.eng }} ]</span>
+                                        </div>
+                                        <div class="col-6 d-flex justify-content-end">
+                                            <div class="dropdown" v-if="isLoggedIn">
+                                                <small class="d-flex algin-self-center" data-bs-toggle="dropdown"
+                                                    @click="see.word = w, see.index = wi">
+                                                    <i class="ri-more-2-line btn btn-sm btn-light p-0"></i>
+                                                </small>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <div class="dropdown-item d-flex align-self-center" role="button"
+                                                            data-bs-toggle="modal" data-bs-target="#editWordModal">
+                                                            <i class="ri-edit-fill me-1"></i>Edit
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="dropdown-item d-flex align-self-center" role="button"
+                                                            @click="deleteWord(wi)">
+                                                            <i class="ri-delete-bin-line me-1"></i>Delete
+                                                        </div>
+                                                    </li>
+                                                    <li v-if="wi > 0">
+                                                        <div class="dropdown-item d-flex align-self-center" role="button"
+                                                            @click="move('up', wi)">
+                                                            <i class="ri-arrow-up-line me-1"></i>Move up
+                                                        </div>
+                                                    </li>
+                                                    <li v-if="wi < word[1].length - 1">
+                                                        <div class="dropdown-item d-flex align-self-center" role="button"
+                                                            @click="move('down', wi)">
+                                                            <i class="ri-arrow-down-line me-1"></i>Move down
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                     <template v-for="(t, ti) in w.th" :key="ti + t.mean">
