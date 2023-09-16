@@ -149,7 +149,7 @@
                     <div id="d-mobile">
                         <template v-for="word in filteredWord" :word="word[0]">
                             <div class="vstack gap-2">
-                                <div class="bg-danger bg-opacity-25 px-2 py-1 rounded-2">
+                                <div class="bg-danger bg-opacity-25 p-1 rounded-2">
                                     <b>{{ word[0] }}</b>
                                 </div>
                                 <template v-for="(w, wi) in word[1]" :key="wi + w.mmr">
