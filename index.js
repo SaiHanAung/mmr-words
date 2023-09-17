@@ -185,6 +185,21 @@ const vm = Vue.createApp({
     computed: {
         filteredWord() {
             let words = Object.entries(this.words)
+            const searchText = this.see.search
+
+            if (searchText) {
+                let txt = []
+                words.forEach(el => {
+                    el[1].forEach(word => {
+                        if (word.mmr?.includes(searchText)) txt.push([el[0], [word]])
+
+                        word.th?.forEach(t => {
+                            if (t.mean?.includes(searchText)) txt.push([el[0], [word]])
+                        })
+                    })
+                })
+                return txt
+            }
 
             return words
         }
