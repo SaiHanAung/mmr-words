@@ -37,6 +37,8 @@
         integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+
     <style>
         [v-cloak] {
             display: none;
@@ -55,11 +57,63 @@
             height: 100%;
             font-size: 14px;
         }
+
+        #buttonToTop,
+        #buttonToDown {
+            display: inline-block;
+            background-color: #cecece;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 4px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            transition: background-color .3s,
+                opacity .5s, visibility .5s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        #buttonToTop::after,
+        #buttonToDown::after {
+            font-weight: normal;
+            font-style: normal;
+            font-size: 2em;
+            line-height: 50px;
+            color: #fff;
+        }
+
+        #buttonToTop:hover,
+        #buttonToDown:hover {
+            cursor: pointer;
+            background-color: #333;
+        }
+
+        #buttonToTop:active,
+        #buttonToDown:active {
+            background-color: #555;
+        }
+
+        #buttonToTop.show,
+        #buttonToDown.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
 <body>
-    <div id="app">
+    <div id="buttonToTop" class="text-decoration-none d-flex align-items-center rounded-5">
+        <i class="ri-arrow-up-s-line fs-1 m-auto display-1 text-danger"></i>
+    </div>
+
+    <div id="buttonToDown" class="text-decoration-none d-flex align-items-center rounded-5">
+        <i class="ri-arrow-down-s-line fs-1 m-auto display-1 text-danger"></i>
+    </div>
+
+    <div id="app" class="content">
         <nav class="py-2 fixed-top shadow-sm" style="background-color: #880E4F; overflow-x: hidden;">
             <div class="row text-center">
                 <div class="col text-white">
@@ -272,6 +326,24 @@
     </footer>
 
     <script type="module" src="index.js"></script>
+
+    <script>
+        var buttonToTop = $('#buttonToTop');
+        var buttonToDown = $('#buttonToDown');
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                buttonToTop.addClass('show');
+                buttonToDown.removeClass('show');
+            } else {
+                buttonToDown.addClass('show')
+                buttonToTop.removeClass('show');
+            }
+        });
+
+        buttonToTop.on('click', () => window.scrollTo(0, document.body.scrollTop));
+        buttonToDown.on('click', () => window.scrollTo(0, document.body.scrollHeight));
+    </script>
 </body>
 
 </html>
