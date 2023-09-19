@@ -113,13 +113,34 @@
 
     <div id="app" class="content">
         <nav class="py-2 fixed-top shadow-sm" style="background-color: #880E4F; overflow-x: hidden;">
-            <div class="row text-center">
-                <div class="col text-white">
-                    MMR-WORDS
-                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#addWordModal"
-                        @click="input.th = []">
-                        <i class="ri-add-line"></i>Add
+            <div class="d-flex gap-2 ps-2 align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-3 text-white">
+                    <i class="ri-menu-line fs-5" role="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
+                    <span>MMR-WORDS</span>
+                </div>
+                <div class="text-end me-2">
+                    <button class="btn btn-light btn-sm d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#addWordModal" @click="input.th = [{type: '', mean: ''}]">
+                        <i class="ri-add-line fs-6"></i>Add
                     </button>
+                </div>
+            </div>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Select character</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="d-flex gap-3 flex-wrap">
+                        <template v-for="word in Object.entries(this.words)" :key="'character_' + word[0]">
+                            <a :href="'#'+word[0]" @click="hideOffcanvas('offcanvasWithBothOptions')"
+                                class="text-decoration-none text-dark bg-secondary bg-opacity-10 px-3 py-2 rounded-3">{{
+                                word[0]
+                                }}</a>
+                        </template>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -137,7 +158,7 @@
                 </div>
                 <div class="col-12">
                     <template v-for="word in filteredWord" :word="word[0]">
-                        <div class="vstack gap-2">
+                        <div class="vstack gap-2" :id="word[0]">
                             <div class="bg-danger bg-opacity-25 p-1 rounded-2">
                                 <b>{{ word[0] }}</b>
                             </div>

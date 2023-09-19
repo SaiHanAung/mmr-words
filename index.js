@@ -181,6 +181,9 @@ const vm = Vue.createApp({
                 console.error(error)
             });
         },
+        hideOffcanvas(id) {
+            $('#' + id).offcanvas('hide')
+        }
     },
     computed: {
         filteredWord() {
