@@ -18,7 +18,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDAAqGV8uZ-ujXky3KNpoW6aEdEdN8-YF4",
+    apiKey: "AIzaSyAl3vewal-nIa6eapATTaOIQVIQaGBb-6Q",
     authDomain: "sai-dev-4d945.firebaseapp.com",
     projectId: "sai-dev-4d945",
     storageBucket: "sai-dev-4d945.appspot.com",
